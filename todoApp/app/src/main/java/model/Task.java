@@ -13,6 +13,7 @@ import java.util.Date;
 public class Task {
     
     private int id;
+    private int project_id;
     private String name;
     private String description;
     private Boolean completed;
@@ -20,10 +21,14 @@ public class Task {
     private Date deadLine;
     private Date creationAt;
     private Date updateAt;
-    private int project_id;
 
-    public Task(int id, String name, String description, Boolean completed, String notes, Date deadLine, Date creationAt, Date updateAt, int project_id) {
+    public Task(){
+        
+    }
+    
+    public Task(int id, int project_id, String name, String description, Boolean completed, String notes, Date deadLine, Date creationAt, Date updateAt) {
         this.id = id;
+        this.project_id = project_id;
         this.name = name;
         this.description = description;
         this.completed = completed;
@@ -31,7 +36,6 @@ public class Task {
         this.deadLine = deadLine;
         this.creationAt = creationAt;
         this.updateAt = updateAt;
-        this.project_id = project_id;
     }
 
     public int getId() {
@@ -42,6 +46,14 @@ public class Task {
         this.id = id;
     }
 
+    public int getProject_id() {
+        return project_id;
+    }
+
+    public void setProject_id(int project_id) {
+        this.project_id = project_id;
+    }    
+    
     public String getName() {
         return name;
     }
@@ -97,18 +109,10 @@ public class Task {
     public void setUpdateAt(Date updateAt) {
         this.updateAt = updateAt;
     }
-
-    public int getProject_id() {
-        return project_id;
-    }
-
-    public void setProject_id(int project_id) {
-        this.project_id = project_id;
-    }
-
+    
     @Override
     public String toString() {
-        return "Task{" + "id=" + id + ", name=" + name + ", description=" + description + ", completed=" + completed + ", notes=" + notes + ", deadLine=" + deadLine + ", creationAt=" + creationAt + ", updateAt=" + updateAt + ", project_id=" + project_id + '}';
+        return "Task{" + "id=" + id + ", project_id=" + project_id + ", name=" + name + ", description=" + description + ", completed=" + completed + ", notes=" + notes + ", deadLine=" + deadLine + ", creationAt=" + creationAt + ", updateAt=" + updateAt + '}';
     }
     
     

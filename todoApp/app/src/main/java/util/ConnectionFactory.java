@@ -6,6 +6,8 @@ package util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /**
  *
@@ -28,14 +30,42 @@ public class ConnectionFactory {
         }        
     }
     
-    public static void closeConection(Connection con){
+    public static void closeConection(Connection conn, PreparedStatement stm){
         try {
-            if(con != null){
-                con.close();
+            if(conn != null){
+                conn.close();
             }
+            
+            if(stm != null){
+                conn.close();
+            }
+
         } catch (Exception e) {
             throw new RuntimeException("Erro ao fechar conexao!");
         }
     }
+
+    public static void closeConection(Connection conn, PreparedStatement stm, ResultSet rs){
+        try {
+            if(conn != null){
+                conn.close();
+            }
+            
+            if(stm != null){
+                stm.close();
+            }
+            
+            if(rs != null){
+                rs.close();
+            }
+            
+            
+
+        } catch (Exception e) {
+            throw new RuntimeException("Erro ao fechar conexao!");
+        }
+    }
+
+
     
 }
