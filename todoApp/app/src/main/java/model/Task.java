@@ -20,7 +20,7 @@ public class Task {
     private String notes;
     private Date deadLine;
     private Date creationAt;
-    private Date updateAt;
+    private Date updatedAt;
 
     public Task(){
         
@@ -35,7 +35,7 @@ public class Task {
         this.notes = notes;
         this.deadLine = deadLine;
         this.creationAt = creationAt;
-        this.updateAt = updateAt;
+        this.updatedAt = updateAt;
     }
 
     public int getId() {
@@ -102,17 +102,17 @@ public class Task {
         this.creationAt = creationAt;
     }
 
-    public Date getUpdateAt() {
-        return updateAt;
+    public Date getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setUpdateAt(Date updateAt) {
-        this.updateAt = updateAt;
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
     
     @Override
     public String toString() {
-        return "Task{" + "id=" + id + ", project_id=" + project_id + ", name=" + name + ", description=" + description + ", completed=" + completed + ", notes=" + notes + ", deadLine=" + deadLine + ", creationAt=" + creationAt + ", updateAt=" + updateAt + '}';
+        return "Task{" + "id=" + id + ", project_id=" + project_id + ", name=" + name + ", description=" + description + ", completed=" + completed + ", notes=" + notes + ", deadLine=" + deadLine + ", creationAt=" + creationAt + ", updateAt=" + updatedAt + '}';
     }
     
     

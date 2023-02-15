@@ -18,6 +18,11 @@ public class Project {
     private Date creationAt;
     private Date updatedAt;
 
+    
+    public Project(){
+        
+    }
+    
     public Project(int id, String name, String description, Date creationAt, Date updatedAt) {
         this.id = id;
         this.name = name;

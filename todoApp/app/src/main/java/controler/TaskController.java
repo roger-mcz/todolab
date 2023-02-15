@@ -42,7 +42,7 @@ public class TaskController {
             stm.setString(5, task.getNotes());
             stm.setDate(6, new Date(task.getDeadLine().getTime()));
             stm.setDate(7, new Date(task.getCreationAt().getTime()));
-            stm.setDate(8, new Date(task.getUpdateAt().getTime()));
+            stm.setDate(8, new Date(task.getUpdatedAt().getTime()));
             stm.execute();
         } catch (Exception e) {
             throw new RuntimeException ("Erro ao Salvar tarefa: " + e.getMessage(), e);
@@ -75,7 +75,7 @@ public class TaskController {
             stm.setString(5, task.getNotes());
             stm.setDate(6, new Date(task.getDeadLine().getTime()));
             stm.setDate(7, new Date(task.getCreationAt().getTime()));
-            stm.setDate(8, new Date(task.getUpdateAt().getTime()));
+            stm.setDate(8, new Date(task.getUpdatedAt().getTime()));
             stm.setInt(9, task.getId());
             stm.execute();            
         }  catch (Exception e) {
@@ -125,7 +125,7 @@ public class TaskController {
                 task.setNotes(rs.getString("notes"));
                 task.setDeadLine(rs.getDate("deadLine"));
                 task.setCreationAt(rs.getDate("creationAt"));
-                task.setUpdateAt(rs.getDate("updateAt"));
+                task.setUpdatedAt(rs.getDate("updateAt"));
                 tasks.add(task);
             }
         } catch (Exception e) {
