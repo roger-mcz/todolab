@@ -1,5 +1,8 @@
 package Main;
 
+import java.awt.Color;
+import java.awt.Font;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -17,6 +20,7 @@ public class MainScreen extends javax.swing.JFrame {
      */
     public MainScreen() {
         initComponents();
+        decorateTableTask();
     }
 
     /**
@@ -330,7 +334,7 @@ public class MainScreen extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Java swing".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -376,4 +380,16 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableTasks;
     // End of variables declaration//GEN-END:variables
+
+    public void decorateTableTask(){
+        //customizando o header da table tasks
+        jTableTasks.getTableHeader().setFont(new Font("Noto Sans", Font.BOLD, 18));
+        jTableTasks.getTableHeader().setBackground(new Color(0,102,102));
+        jTableTasks.getTableHeader().setForeground(new Color(255,255,255));
+        
+        //criando o sort automatico
+        jTableTasks.setAutoCreateRowSorter(true);
+                
+    }
+    
 }
