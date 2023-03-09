@@ -4,7 +4,8 @@
  */
 package model;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -18,15 +19,15 @@ public class Task {
     private String description;
     private Boolean completed;
     private String notes;
-    private Date deadLine;
-    private Date creationAt;
-    private Date updatedAt;
+    private LocalDate deadLine;
+    private LocalDateTime creationAt;
+    private LocalDateTime updatedAt;
 
     public Task(){
         
     }
     
-    public Task(int id, int project_id, String name, String description, Boolean completed, String notes, Date deadLine, Date creationAt, Date updateAt) {
+    public Task(int id, int project_id, String name, String description, Boolean completed, String notes, LocalDate deadLine, LocalDateTime creationAt, LocalDateTime updateAt) {
         this.id = id;
         this.project_id = project_id;
         this.name = name;
@@ -86,27 +87,27 @@ public class Task {
         this.notes = notes;
     }
 
-    public Date getDeadLine() {
+    public LocalDate getDeadLine() {
         return deadLine;
     }
 
-    public void setDeadLine(Date deadLine) {
+    public void setDeadLine(LocalDate deadLine) {
         this.deadLine = deadLine;
     }
 
-    public Date getCreationAt() {
+    public LocalDateTime getCreationAt() {
         return creationAt;
     }
 
-    public void setCreationAt(Date creationAt) {
+    public void setCreationAt(LocalDateTime creationAt) {
         this.creationAt = creationAt;
     }
 
-    public Date getUpdatedAt() {
+    public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
     

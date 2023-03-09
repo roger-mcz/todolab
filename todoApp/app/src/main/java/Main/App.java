@@ -20,16 +20,11 @@ public class App {
         */
         
         Project prj01 = new Project() ;   
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        //Date dateNow = new Date(System.currentTimeMillis());
-        //LocalDateTime dateNow = LocalDateTime.now();
-        //System.out.println("data gerada:" + formatter.format(dateNow));
-        //System.out.println("data gerada:" + dateNow);
-        
-        LocalDateTime dataHoraAgora = LocalDateTime.now();
-        System.out.println("data gerada:" + dataHoraAgora);
-        
+
         /*
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        LocalDateTime dateNow = LocalDateTime.now();
+        System.out.println("data gerada:" + formatter.format(dateNow));
         prj01.setName("nome 01");
         prj01.setDescription("desc 01");
         prj01.setCreationAt(dateNow);

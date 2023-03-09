@@ -150,6 +150,11 @@ public class MainScreen extends javax.swing.JFrame {
         jLabelTitle.setText("Projetos");
 
         jLabelAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("plus_64.png")));
+        jLabelAdd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelAddMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelTitleProjectsLayout = new javax.swing.GroupLayout(jPanelTitleProjects);
         jPanelTitleProjects.setLayout(jPanelTitleProjectsLayout);
@@ -158,9 +163,9 @@ public class MainScreen extends javax.swing.JFrame {
             .addGroup(jPanelTitleProjectsLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(88, 88, 88)
                 .addComponent(jLabelAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76))
+                .addContainerGap())
         );
         jPanelTitleProjectsLayout.setVerticalGroup(
             jPanelTitleProjectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,6 +186,11 @@ public class MainScreen extends javax.swing.JFrame {
         jLabelTasks.setText("Tarefas");
 
         jLabelTaskAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("plus_64.png")));
+        jLabelTaskAdd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelTaskAddMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelTitleTasksLayout = new javax.swing.GroupLayout(jPanelTitleTasks);
         jPanelTitleTasks.setLayout(jPanelTitleTasksLayout);
@@ -225,7 +235,7 @@ public class MainScreen extends javax.swing.JFrame {
             jPanelProjectListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelProjectListLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
         jPanelProjectListLayout.setVerticalGroup(
@@ -277,7 +287,7 @@ public class MainScreen extends javax.swing.JFrame {
         jPanelTasks.setLayout(jPanelTasksLayout);
         jPanelTasksLayout.setHorizontalGroup(
             jPanelTasksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 725, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 657, Short.MAX_VALUE)
         );
         jPanelTasksLayout.setVerticalGroup(
             jPanelTasksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -292,7 +302,7 @@ public class MainScreen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanelProjectList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelTitleProjects, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jPanelTitleProjects, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanelTasks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -317,6 +327,16 @@ public class MainScreen extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabelAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAddMouseClicked
+        ProjectDialogScreen prj = new ProjectDialogScreen(this, rootPaneCheckingEnabled);
+        prj.setVisible(true);
+    }//GEN-LAST:event_jLabelAddMouseClicked
+
+    private void jLabelTaskAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelTaskAddMouseClicked
+        TaskDialogScreen tsk = new TaskDialogScreen(this, rootPaneCheckingEnabled);
+        tsk.setVisible(true);
+    }//GEN-LAST:event_jLabelTaskAddMouseClicked
 
     /**
      * @param args the command line arguments

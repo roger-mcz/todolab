@@ -4,7 +4,7 @@
  */
 package model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -15,15 +15,16 @@ public class Project {
     private int id;
     private String name;
     private String description;
-    private Date creationAt;
-    private Date updatedAt;
+    private LocalDateTime creationAt;
+    private LocalDateTime updatedAt;
+    
 
     
     public Project(){
         
     }
     
-    public Project(int id, String name, String description, Date creationAt, Date updatedAt) {
+    public Project(int id, String name, String description, LocalDateTime creationAt, LocalDateTime updatedAt) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -55,19 +56,19 @@ public class Project {
         this.description = description;
     }
 
-    public Date getCreationAt() {
+    public LocalDateTime getCreationAt() {
         return creationAt;
     }
 
-    public void setCreationAt(Date creationAt) {
+    public void setCreationAt(LocalDateTime creationAt) {
         this.creationAt = creationAt;
     }
 
-    public Date getUpdatedAt() {
+    public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 

@@ -9,6 +9,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import model.Task;
@@ -21,30 +22,33 @@ import util.ConnectionFactory;
 public class TaskController {
 
     public void save(Task task){
-        String sql = "INSERT INTO tasks (project_id, "
+        String sql = "INSERT INTO tasks ("
+                + "project_id, "
                 + "name, "
                 + "description, "
                 + "completed, "
-                + "notes,"
-                + "deadLine"
-                + "creationAt"
-                + "updateAt) VALUES(?,?,?,?,?,?,?,?)";
+                + "notes, "
+                + "deadLine, "
+                + "creationAt, "
+                + "updatedAt) VALUES(?,?,?,?,?,?,?,?)";
         Connection conn = null;
         PreparedStatement stm = null;
-        
+        //conexão ao banco e execução do SQL
         try {
             conn = ConnectionFactory.getConnection();
-            stm = conn.prepareStatement(sql);
+            stm = conn.prepareStatement(sql);            
+            
             stm.setInt(1, task.getProject_id());
             stm.setString(2, task.getName());
             stm.setString(3, task.getDescription());
             stm.setBoolean(4, task.getCompleted());
             stm.setString(5, task.getNotes());
-            stm.setDate(6, new Date(task.getDeadLine().getTime()));
-            stm.setDate(7, new Date(task.getCreationAt().getTime()));
-            stm.setDate(8, new Date(task.getUpdatedAt().getTime()));
+            stm.setDate(6, Date.valueOf(task.getDeadLine()));
+            stm.setTimestamp(7, Timestamp.valueOf(task.getCreationAt()));
+            stm.setTimestamp(8, Timestamp.valueOf(task.getUpdatedAt()));
+            //System.out.println("\n\tstm:" + stm.toString());
             stm.execute();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             throw new RuntimeException ("Erro ao Salvar tarefa: " + e.getMessage(), e);
         }finally{
             ConnectionFactory.closeConection(conn, stm);
@@ -73,9 +77,9 @@ public class TaskController {
             stm.setString(3, task.getDescription());
             stm.setBoolean(4, task.getCompleted());
             stm.setString(5, task.getNotes());
-            stm.setDate(6, new Date(task.getDeadLine().getTime()));
-            stm.setDate(7, new Date(task.getCreationAt().getTime()));
-            stm.setDate(8, new Date(task.getUpdatedAt().getTime()));
+//            stm.setDate(6, new Date(task.getDeadLine().getTime()));
+//            stm.setDate(7, new Date(task.getCreationAt().getTime()));
+//            stm.setDate(8, new Date(task.getUpdatedAt().getTime()));
             stm.setInt(9, task.getId());
             stm.execute();            
         }  catch (Exception e) {
@@ -123,9 +127,9 @@ public class TaskController {
                 task.setDescription(rs.getString("description"));
                 task.setCompleted(rs.getBoolean("completed"));
                 task.setNotes(rs.getString("notes"));
-                task.setDeadLine(rs.getDate("deadLine"));
-                task.setCreationAt(rs.getDate("creationAt"));
-                task.setUpdatedAt(rs.getDate("updateAt"));
+//                task.setDeadLine(rs.getDate("deadLine"));
+//                task.setCreationAt(rs.getDate("creationAt"));
+//                task.setUpdatedAt(rs.getDate("updateAt"));
                 tasks.add(task);
             }
         } catch (Exception e) {

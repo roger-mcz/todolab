@@ -4,18 +4,28 @@
  */
 package Main;
 
+import controler.TaskController;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import model.Task;
+
 /**
  *
  * @author roger
  */
 public class TaskDialogScreen extends javax.swing.JDialog {
 
-    /**
-     * Creates new form TaskDialogScreen
-     */
+    TaskController controller;
+    
     public TaskDialogScreen(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        controller = new TaskController();
     }
 
     /**
@@ -32,29 +42,35 @@ public class TaskDialogScreen extends javax.swing.JDialog {
         jLabelAdd = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldName = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jTextField2 = new javax.swing.JTextField();
+        jTextAreaDescription = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextAreaNotes = new javax.swing.JTextArea();
+        jFormattedTextdeadLine = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(545, 845));
-        setPreferredSize(new java.awt.Dimension(545, 845));
+        setMinimumSize(new java.awt.Dimension(560, 854));
+        setPreferredSize(new java.awt.Dimension(560, 854));
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel1.setMinimumSize(new java.awt.Dimension(520, 90));
-        jPanel1.setPreferredSize(new java.awt.Dimension(520, 90));
+        jPanel1.setMinimumSize(new java.awt.Dimension(0, 0));
+        jPanel1.setPreferredSize(new java.awt.Dimension(107, 90));
 
         jLabel1.setFont(new java.awt.Font("Noto Sans", 1, 36)); // NOI18N
         jLabel1.setForeground(java.awt.Color.white);
         jLabel1.setText("Tarefa");
 
+        jLabelAdd.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("checkedWhite_64.png")));
+        jLabelAdd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelAddMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -64,15 +80,16 @@ public class TaskDialogScreen extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabelAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -84,7 +101,8 @@ public class TaskDialogScreen extends javax.swing.JDialog {
         jLabel3.setForeground(new java.awt.Color(0, 102, 102));
         jLabel3.setText("Nome");
 
-        jTextField1.setBackground(java.awt.Color.white);
+        jTextFieldName.setBackground(java.awt.Color.white);
+        jTextFieldName.setFont(new java.awt.Font("Noto Sans", 0, 28)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Noto Sans", 1, 23)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 102, 102));
@@ -94,21 +112,25 @@ public class TaskDialogScreen extends javax.swing.JDialog {
         jLabel5.setForeground(new java.awt.Color(0, 102, 102));
         jLabel5.setText("Prazo");
 
-        jTextArea2.setBackground(java.awt.Color.white);
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
-
-        jTextField2.setBackground(java.awt.Color.white);
+        jTextAreaDescription.setBackground(java.awt.Color.white);
+        jTextAreaDescription.setColumns(20);
+        jTextAreaDescription.setFont(new java.awt.Font("Noto Sans", 0, 28)); // NOI18N
+        jTextAreaDescription.setRows(5);
+        jScrollPane2.setViewportView(jTextAreaDescription);
 
         jLabel6.setFont(new java.awt.Font("Noto Sans", 1, 23)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 102, 102));
         jLabel6.setText("Nota");
 
-        jTextArea1.setBackground(java.awt.Color.white);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jTextAreaNotes.setBackground(java.awt.Color.white);
+        jTextAreaNotes.setColumns(20);
+        jTextAreaNotes.setFont(new java.awt.Font("Noto Sans", 0, 28)); // NOI18N
+        jTextAreaNotes.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaNotes);
+
+        jFormattedTextdeadLine.setBackground(new java.awt.Color(255, 255, 255));
+        jFormattedTextdeadLine.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        jFormattedTextdeadLine.setFont(new java.awt.Font("Noto Sans", 0, 28)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -117,20 +139,23 @@ public class TaskDialogScreen extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
-                                    .addComponent(jTextField1)
-                                    .addComponent(jScrollPane2))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextFieldName)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
+                                    .addComponent(jFormattedTextdeadLine)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(104, 104, 104))
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 568, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,20 +163,20 @@ public class TaskDialogScreen extends javax.swing.JDialog {
                 .addGap(20, 20, 20)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addGap(18, 18, 18)
+                .addComponent(jFormattedTextdeadLine, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -161,8 +186,8 @@ public class TaskDialogScreen extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 528, Short.MAX_VALUE))
                 .addGap(8, 8, 8))
         );
         layout.setVerticalGroup(
@@ -171,12 +196,37 @@ public class TaskDialogScreen extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 681, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabelAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAddMouseClicked
+        
+        Task task = new Task();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        try {
+            //System.out.println("\n\tjTextdeadLine:" + jTextdeadLine.getText());
+            LocalDate deadLine = LocalDate.parse(jFormattedTextdeadLine.getText(), formatter);
+            //System.out.println("\n\tdeadLine:" + deadLine);
+            task.setProject_id(2);
+            task.setName(jTextFieldName.getText());
+            task.setDescription(jTextAreaDescription.getText());
+            task.setCompleted(false);
+            task.setNotes(jTextAreaNotes.getText());
+            task.setDeadLine(deadLine);
+            task.setCreationAt(LocalDateTime.now());
+            task.setUpdatedAt(LocalDateTime.now());
+            controller.save(task);
+            JOptionPane.showMessageDialog(rootPane, "Tarefa salvo com sucesso!");
+        } catch (Exception ex) {
+            Logger.getLogger(TaskDialogScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jLabelAddMouseClicked
 
     /**
      * @param args the command line arguments
@@ -189,7 +239,7 @@ public class TaskDialogScreen extends javax.swing.JDialog {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Java swing".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -221,6 +271,7 @@ public class TaskDialogScreen extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFormattedTextField jFormattedTextdeadLine;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -231,9 +282,8 @@ public class TaskDialogScreen extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextArea jTextAreaDescription;
+    private javax.swing.JTextArea jTextAreaNotes;
+    private javax.swing.JTextField jTextFieldName;
     // End of variables declaration//GEN-END:variables
 }

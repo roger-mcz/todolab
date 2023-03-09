@@ -5,10 +5,13 @@
 package controler;
 
 import java.sql.Connection;
-import java.sql.Date;
+//import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import model.Project;
@@ -29,21 +32,23 @@ public class ProjectController {
                 + "updatedAt) VALUES(?,?,?,?)";
         Connection conn = null;
         PreparedStatement stm = null;
-        //conexão ao banco
+        //conexão ao banco e execução do SQL
         try {
             conn = ConnectionFactory.getConnection();
             stm = conn.prepareStatement(sql);
             stm.setString(1, project.getName());
             stm.setString(2, project.getDescription());
-            stm.setDate(3, new Date(project.getCreationAt().getTime()));
-            stm.setDate(4, new Date(project.getUpdatedAt() .getTime()));
+            stm.setTimestamp(3, Timestamp.valueOf(project.getCreationAt()));
+            stm.setTimestamp(4, Timestamp.valueOf(project.getUpdatedAt()));
             stm.execute();
         }catch (Exception e) {
             throw new RuntimeException ("Erro ao Salvar o projeto: " + e.getMessage(), e);
         }finally{
-            ConnectionFactory.closeConection(conn, stm);
+           ConnectionFactory.closeConection(conn, stm);
         }
     }
+    
+    
     
         public void update(Project project){
             String sql = "UPDATE INTO projects SET "
@@ -60,8 +65,8 @@ public class ProjectController {
                 stm = conn.prepareStatement(sql);
                 stm.setString(1, project.getName());
                 stm.setString(2, project.getDescription());
-                stm.setDate(3, new Date(project.getCreationAt().getTime()));
-                stm.setDate(4, new Date(project.getUpdatedAt().getTime()));
+                stm.setTimestamp(3, Timestamp.valueOf(project.getCreationAt()));
+                stm.setTimestamp(4, Timestamp.valueOf(LocalDateTime.now()));
                 stm.setInt(5, project.getId());
                 stm.execute();            
             }catch (Exception e) {
@@ -104,8 +109,8 @@ public class ProjectController {
                     project.setId(rs.getInt("id"));
                     project.setName(rs.getString("name"));
                     project.setDescription(rs.getString("description"));
-                    project.setCreationAt(rs.getDate("creationAt"));
-                    project.setUpdatedAt(rs.getDate("updateAt"));
+                    project.setCreationAt(rs.getTimestamp("creationAt").toLocalDateTime());
+                    project.setUpdatedAt(rs.getTimestamp("updateAt").toLocalDateTime());
                     projects.add(project);
                 }
             } catch (Exception e) {
@@ -116,4 +121,6 @@ public class ProjectController {
             return projects;
         }
 
+        
+        
 }
