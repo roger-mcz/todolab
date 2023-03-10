@@ -110,7 +110,7 @@ public class ProjectController {
                     project.setName(rs.getString("name"));
                     project.setDescription(rs.getString("description"));
                     project.setCreationAt(rs.getTimestamp("creationAt").toLocalDateTime());
-                    project.setUpdatedAt(rs.getTimestamp("updateAt").toLocalDateTime());
+                    project.setUpdatedAt(rs.getTimestamp("updatedAt").toLocalDateTime());
                     projects.add(project);
                 }
             } catch (Exception e) {

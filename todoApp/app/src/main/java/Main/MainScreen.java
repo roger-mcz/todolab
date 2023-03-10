@@ -1,7 +1,14 @@
 package Main;
 
+import controler.ProjectController;
+import controler.TaskController;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.List;
+import javax.swing.DefaultListModel;
+import model.Project;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -15,12 +22,15 @@ import java.awt.Font;
  */
 public class MainScreen extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainScreen
-     */
+    ProjectController prjController;
+    TaskController tskController;
+    DefaultListModel prjModel;
+    
     public MainScreen() {
         initComponents();
         decorateTableTask();
+        initDataController();
+        initComponentsModel();
     }
 
     /**
@@ -218,11 +228,6 @@ public class MainScreen extends javax.swing.JFrame {
 
         jListProjects.setBackground(java.awt.Color.white);
         jListProjects.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
-        jListProjects.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jListProjects.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jListProjects.setFixedCellHeight(50);
         jListProjects.setSelectionBackground(new java.awt.Color(0, 102, 102));
@@ -329,8 +334,14 @@ public class MainScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabelAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAddMouseClicked
-        ProjectDialogScreen prj = new ProjectDialogScreen(this, rootPaneCheckingEnabled);
-        prj.setVisible(true);
+        ProjectDialogScreen prjDialogScreen = new ProjectDialogScreen(this, rootPaneCheckingEnabled);
+        prjDialogScreen.setVisible(true);
+        
+        prjDialogScreen.addWindowListener(new WindowAdapter() {
+            public void windowClosed(WindowEvent e) {
+                loadProjects();
+            }
+        });
     }//GEN-LAST:event_jLabelAddMouseClicked
 
     private void jLabelTaskAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelTaskAddMouseClicked
@@ -407,4 +418,26 @@ public class MainScreen extends javax.swing.JFrame {
                 
     }
     
+    public void initDataController(){
+        prjController = new ProjectController();
+        tskController = new TaskController();               
+    }
+    
+    public void initComponentsModel(){
+        prjModel = new DefaultListModel();
+        loadProjects();
+    }
+    
+    public void loadProjects(){
+        List<Project> projects = prjController.getAll();
+        prjModel.clear();
+        
+        for(int i = 0; i < projects.size(); i++){
+            Project prj = projects.get(i);
+            prjModel.addElement(prj.getName());
+        }
+        jListProjects.setModel(prjModel);
+        
+        
+    }
 }
