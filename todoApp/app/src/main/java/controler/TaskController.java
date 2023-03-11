@@ -10,6 +10,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import model.Task;
@@ -113,12 +116,16 @@ public class TaskController {
         PreparedStatement stm = null;
         ResultSet rs = null;
         List<Task> tasks = new ArrayList<Task> ();
+
         try {
             conn = ConnectionFactory.getConnection();
             stm = conn.prepareStatement(sql);
             stm.setInt(1, project_id);
             rs = stm.executeQuery();
             
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+                
             while (rs.next()) {
                 Task task = new Task();
                 task.setId(rs.getInt("id"));
@@ -127,10 +134,11 @@ public class TaskController {
                 task.setDescription(rs.getString("description"));
                 task.setCompleted(rs.getBoolean("completed"));
                 task.setNotes(rs.getString("notes"));
-//                task.setDeadLine(rs.getDate("deadLine"));
-//                task.setCreationAt(rs.getDate("creationAt"));
-//                task.setUpdatedAt(rs.getDate("updateAt"));
+                task.setDeadLine( LocalDate.parse(rs.getString("deadLine")));
+                task.setCreationAt(LocalDateTime.parse(rs.getString("creationAt"), formatter));
+                task.setUpdatedAt(LocalDateTime.parse(rs.getString("updatedAt"), formatter));
                 tasks.add(task);
+                    
             }
         } catch (Exception e) {
             throw new RuntimeException("Erro ao listar dados!");

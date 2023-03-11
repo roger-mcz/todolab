@@ -9,6 +9,8 @@ import java.awt.event.WindowEvent;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import model.Project;
+import model.Task;
+import util.TaskTableModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -24,7 +26,8 @@ public class MainScreen extends javax.swing.JFrame {
 
     ProjectController prjController;
     TaskController tskController;
-    DefaultListModel prjModel;
+    DefaultListModel projectsModel;
+    TaskTableModel tasksModel;
     
     public MainScreen() {
         initComponents();
@@ -285,6 +288,7 @@ public class MainScreen extends javax.swing.JFrame {
         jTableTasks.setGridColor(new java.awt.Color(255, 255, 255));
         jTableTasks.setRowHeight(50);
         jTableTasks.setSelectionBackground(new java.awt.Color(0, 102, 102));
+        jTableTasks.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jTableTasks.setShowHorizontalLines(true);
         jScrollPane2.setViewportView(jTableTasks);
 
@@ -424,19 +428,29 @@ public class MainScreen extends javax.swing.JFrame {
     }
     
     public void initComponentsModel(){
-        prjModel = new DefaultListModel();
+        projectsModel = new DefaultListModel();
         loadProjects();
+        tasksModel = new TaskTableModel();
+        jTableTasks.setModel(tasksModel);
+        loadTasks(2);
     }
+    
+    public void loadTasks(int idProject) {
+        List<Task> tasks = tskController.getAll(idProject);
+        tasksModel.setTasks(tasks);
+        
+    }
+    
     
     public void loadProjects(){
         List<Project> projects = prjController.getAll();
-        prjModel.clear();
+        projectsModel.clear();
         
         for(int i = 0; i < projects.size(); i++){
             Project prj = projects.get(i);
-            prjModel.addElement(prj.getName());
+            projectsModel.addElement(prj.getName());
         }
-        jListProjects.setModel(prjModel);
+        jListProjects.setModel(projectsModel);
         
         
     }
