@@ -4,6 +4,9 @@
  */
 package util;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -18,7 +21,7 @@ public class TaskTableModel extends AbstractTableModel{
     
     String[] columns = {"Nome", "Descrição", "Prazo", "Atualizado em:", "Tarefa concluída", "Editar", "Excluir"};
     List<Task> tasks = new ArrayList();
-
+    
     @Override
     public int getRowCount() {
         return tasks.size();
@@ -37,16 +40,22 @@ public class TaskTableModel extends AbstractTableModel{
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         
+        DateTimeFormatter localDateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter localDateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");        
+        LocalDate localDateConvert = null;
+        LocalDateTime localDateTimeConvert = null;
+        
         switch(columnIndex){
             case 0:
                 return tasks.get(rowIndex).getName();
             case 1:
                 return tasks.get(rowIndex).getDescription();            
             case 2:
-                //System.out.println("deadLine:" + tasks.get(rowIndex).getDeadLine());
-                return tasks.get(rowIndex).getDeadLine();
+                localDateConvert = tasks.get(rowIndex).getDeadLine();
+                return localDateConvert.format(localDateFormatter);
             case 3:
-                return tasks.get(rowIndex).getUpdatedAt().toString().replace("T", " ");
+                localDateTimeConvert = tasks.get(rowIndex).getUpdatedAt();
+                return localDateTimeConvert.format(localDateTimeFormatter);
             case 4:
                 return tasks.get(rowIndex).getCompleted();
             case 5:
