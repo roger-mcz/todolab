@@ -230,11 +230,12 @@ public class MainScreen extends javax.swing.JFrame {
         jPanelProjectList.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jListProjects.setBackground(java.awt.Color.white);
+        jListProjects.setBorder(null);
         jListProjects.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
         jListProjects.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jListProjects.setFixedCellHeight(50);
-        jListProjects.setSelectionBackground(new java.awt.Color(0, 102, 102));
-        jListProjects.setSelectionForeground(java.awt.Color.white);
+        jListProjects.setSelectionBackground(new java.awt.Color(102, 255, 204));
+        jListProjects.setSelectionForeground(new java.awt.Color(0, 51, 51));
         jScrollPane1.setViewportView(jListProjects);
 
         javax.swing.GroupLayout jPanelProjectListLayout = new javax.swing.GroupLayout(jPanelProjectList);
@@ -287,8 +288,8 @@ public class MainScreen extends javax.swing.JFrame {
         });
         jTableTasks.setGridColor(new java.awt.Color(255, 255, 255));
         jTableTasks.setRowHeight(50);
-        jTableTasks.setSelectionBackground(new java.awt.Color(0, 102, 102));
-        jTableTasks.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        jTableTasks.setSelectionBackground(new java.awt.Color(102, 255, 204));
+        jTableTasks.setSelectionForeground(new java.awt.Color(0, 51, 51));
         jTableTasks.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTableTasks.setShowHorizontalLines(true);
         jScrollPane2.setViewportView(jTableTasks);
