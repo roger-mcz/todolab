@@ -292,6 +292,11 @@ public class MainScreen extends javax.swing.JFrame {
         jTableTasks.setSelectionForeground(new java.awt.Color(0, 51, 51));
         jTableTasks.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTableTasks.setShowHorizontalLines(true);
+        jTableTasks.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableTasksMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTableTasks);
 
         javax.swing.GroupLayout jPanelTasksLayout = new javax.swing.GroupLayout(jPanelTasks);
@@ -354,6 +359,20 @@ public class MainScreen extends javax.swing.JFrame {
         TaskDialogScreen tsk = new TaskDialogScreen(this, rootPaneCheckingEnabled);
         tsk.setVisible(true);
     }//GEN-LAST:event_jLabelTaskAddMouseClicked
+
+    private void jTableTasksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTasksMouseClicked
+        int rowIndex = jTableTasks.rowAtPoint(evt.getPoint());
+        int collumnIndex = jTableTasks.columnAtPoint(evt.getPoint());
+        
+        switch (collumnIndex) {
+            case 4:
+                Task task = tasksModel.getTasks().get(rowIndex);
+                tskController.update(task);
+                break;
+            case 5:
+                break;
+        }
+    }//GEN-LAST:event_jTableTasksMouseClicked
 
     /**
      * @param args the command line arguments

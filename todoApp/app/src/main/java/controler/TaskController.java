@@ -59,7 +59,7 @@ public class TaskController {
     }
     
     public void update(Task task){
-       String sql = "UPDATE INTO tasks SET "
+       String sql = "UPDATE tasks SET "
             + "project_id = ?, "
             + "name = ?, "
             + "description = ?, "
@@ -67,7 +67,7 @@ public class TaskController {
             + "notes = ?, "
             + "deadLine = ?, "
             + "creationAt = ?, "
-            + "updateAt = ?, "
+            + "updatedAt = ? "
             + "WHERE id = ?";
         Connection conn =null;
         PreparedStatement stm = null;
@@ -80,9 +80,9 @@ public class TaskController {
             stm.setString(3, task.getDescription());
             stm.setBoolean(4, task.getCompleted());
             stm.setString(5, task.getNotes());
-//            stm.setDate(6, new Date(task.getDeadLine().getTime()));
-//            stm.setDate(7, new Date(task.getCreationAt().getTime()));
-//            stm.setDate(8, new Date(task.getUpdatedAt().getTime()));
+            stm.setDate(6, Date.valueOf(task.getDeadLine()));
+            stm.setTimestamp(7, Timestamp.valueOf(task.getCreationAt()));
+            stm.setTimestamp(8, Timestamp.valueOf(task.getUpdatedAt()));
             stm.setInt(9, task.getId());
             stm.execute();            
         }  catch (Exception e) {
