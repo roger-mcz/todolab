@@ -11,6 +11,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import model.Project;
 import model.Task;
 
 /**
@@ -20,6 +21,7 @@ import model.Task;
 public class TaskDialogScreen extends javax.swing.JDialog {
 
     TaskController controller;
+    Project project;
     
     public TaskDialogScreen(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -39,7 +41,7 @@ public class TaskDialogScreen extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabelAdd = new javax.swing.JLabel();
+        jLabelTaskAdd = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jTextFieldName = new javax.swing.JTextField();
@@ -54,7 +56,6 @@ public class TaskDialogScreen extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(560, 854));
-        setPreferredSize(new java.awt.Dimension(560, 854));
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
         jPanel1.setMinimumSize(new java.awt.Dimension(0, 0));
@@ -64,11 +65,11 @@ public class TaskDialogScreen extends javax.swing.JDialog {
         jLabel1.setForeground(java.awt.Color.white);
         jLabel1.setText("Tarefa");
 
-        jLabelAdd.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabelAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("checkedWhite_64.png")));
-        jLabelAdd.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabelTaskAdd.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelTaskAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("checkedWhite_64.png")));
+        jLabelTaskAdd.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelAddMouseClicked(evt);
+                jLabelTaskAddMouseClicked(evt);
             }
         });
 
@@ -80,7 +81,7 @@ public class TaskDialogScreen extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelTaskAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -89,7 +90,7 @@ public class TaskDialogScreen extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelTaskAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -200,16 +201,15 @@ public class TaskDialogScreen extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabelAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAddMouseClicked
+    private void jLabelTaskAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelTaskAddMouseClicked
         
-        Task task = new Task();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         try {
-            //System.out.println("\n\tjTextdeadLine:" + jTextdeadLine.getText());
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            Task task = new Task();            
             LocalDate deadLine = LocalDate.parse(jFormattedTextdeadLine.getText(), formatter);
-            //System.out.println("\n\tdeadLine:" + deadLine);
-            task.setProject_id(2);
+            
+            task.setProject_id(project.getId());
             task.setName(jTextFieldName.getText());
             task.setDescription(jTextAreaDescription.getText());
             task.setCompleted(false);
@@ -223,7 +223,7 @@ public class TaskDialogScreen extends javax.swing.JDialog {
             Logger.getLogger(TaskDialogScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.dispose();
-    }//GEN-LAST:event_jLabelAddMouseClicked
+    }//GEN-LAST:event_jLabelTaskAddMouseClicked
 
     /**
      * @param args the command line arguments
@@ -267,6 +267,13 @@ public class TaskDialogScreen extends javax.swing.JDialog {
         });
     }
 
+    public void setProject(Project project) {
+        this.project = project;
+    }
+ 
+
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField jFormattedTextdeadLine;
     private javax.swing.JLabel jLabel1;
@@ -274,7 +281,7 @@ public class TaskDialogScreen extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabelAdd;
+    private javax.swing.JLabel jLabelTaskAdd;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
