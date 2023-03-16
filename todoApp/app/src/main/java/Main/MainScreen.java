@@ -303,17 +303,7 @@ public class MainScreen extends javax.swing.JFrame {
         );
 
         jPanelTaskList.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanelTaskListLayout = new javax.swing.GroupLayout(jPanelTaskList);
-        jPanelTaskList.setLayout(jPanelTaskListLayout);
-        jPanelTaskListLayout.setHorizontalGroup(
-            jPanelTaskListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 657, Short.MAX_VALUE)
-        );
-        jPanelTaskListLayout.setVerticalGroup(
-            jPanelTaskListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 822, Short.MAX_VALUE)
-        );
+        jPanelTaskList.setLayout(new java.awt.BorderLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -378,12 +368,23 @@ public class MainScreen extends javax.swing.JFrame {
     private void jTableTasksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTasksMouseClicked
         int rowIndex = jTableTasks.rowAtPoint(evt.getPoint());
         int collumnIndex = jTableTasks.columnAtPoint(evt.getPoint());
+        Task task = tasksModel.getTasks().get(rowIndex);
+        
         switch (collumnIndex) {
             case 4:
-                Task task = tasksModel.getTasks().get(rowIndex);
+                //status tarefa concluída
                 tskController.update(task);
                 break;
             case 5:
+                //botão editar
+                break;
+            case 6:
+                //botal exluir
+                tskController.removeById(task.getId());
+                tasksModel.getTasks().remove(task);
+                int projectIndex = jListProjects.getSelectedIndex();
+                Project prj = (Project) projectsModel.get(projectIndex);
+                loadTasks(prj.getId());
                 break;
         }
     }//GEN-LAST:event_jTableTasksMouseClicked

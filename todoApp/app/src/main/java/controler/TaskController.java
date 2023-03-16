@@ -92,7 +92,7 @@ public class TaskController {
         }
     }
     
-    public void removeById(int idTask) throws SQLException{
+    public void removeById(int idTask) {
         String sql = "DELETE FROM tasks WHERE id = ?";        
         Connection conn =null;
         PreparedStatement stm = null;
