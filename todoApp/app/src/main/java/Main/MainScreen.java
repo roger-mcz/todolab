@@ -10,6 +10,7 @@ import java.util.List;
 import javax.swing.DefaultListModel;
 import model.Project;
 import model.Task;
+import util.DeadLineColumnCellRenderer;
 import util.TaskTableModel;
 
 /*
@@ -31,9 +32,9 @@ public class MainScreen extends javax.swing.JFrame {
     
     public MainScreen() {
         initComponents();
-        decorateTableTask();
         initDataController();
         initComponentsModel();
+        decorateTableTask();
     }
 
     /**
@@ -459,6 +460,9 @@ public class MainScreen extends javax.swing.JFrame {
         jTableTasks.getTableHeader().setFont(new Font("Noto Sans", Font.BOLD, 18));
         jTableTasks.getTableHeader().setBackground(new Color(0,102,102));
         jTableTasks.getTableHeader().setForeground(new Color(255,255,255));
+        
+        jTableTasks.getColumnModel().getColumn(2).setCellRenderer(new DeadLineColumnCellRenderer());
+        
         
         //criando o sort automatico
         jTableTasks.setAutoCreateRowSorter(true);
