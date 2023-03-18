@@ -41,7 +41,7 @@ public class TaskDialogScreen extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabelTaskAdd = new javax.swing.JLabel();
+        jLabelTaskSave = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jTextFieldName = new javax.swing.JTextField();
@@ -65,11 +65,11 @@ public class TaskDialogScreen extends javax.swing.JDialog {
         jLabel1.setForeground(java.awt.Color.white);
         jLabel1.setText("Tarefa");
 
-        jLabelTaskAdd.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabelTaskAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("checkedWhite_64.png")));
-        jLabelTaskAdd.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabelTaskSave.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelTaskSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("checkedWhite_64.png")));
+        jLabelTaskSave.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelTaskAddMouseClicked(evt);
+                jLabelTaskSaveMouseClicked(evt);
             }
         });
 
@@ -81,7 +81,7 @@ public class TaskDialogScreen extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelTaskAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelTaskSave, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -90,7 +90,7 @@ public class TaskDialogScreen extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelTaskAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelTaskSave, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -201,12 +201,11 @@ public class TaskDialogScreen extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabelTaskAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelTaskAddMouseClicked
-        
+    private void jLabelTaskSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelTaskSaveMouseClicked
 
         try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             Task task = new Task();            
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             LocalDate deadLine = LocalDate.parse(jFormattedTextdeadLine.getText(), formatter);
             
             task.setProject_id(project.getId());
@@ -223,7 +222,7 @@ public class TaskDialogScreen extends javax.swing.JDialog {
             Logger.getLogger(TaskDialogScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.dispose();
-    }//GEN-LAST:event_jLabelTaskAddMouseClicked
+    }//GEN-LAST:event_jLabelTaskSaveMouseClicked
 
     /**
      * @param args the command line arguments
@@ -281,7 +280,7 @@ public class TaskDialogScreen extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabelTaskAdd;
+    private javax.swing.JLabel jLabelTaskSave;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

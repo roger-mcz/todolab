@@ -29,7 +29,6 @@ public class DeadLineColumnCellRenderer extends DefaultTableCellRenderer {
        Task task = taskModel.getTasks().get(row);
        
        if (task.getDeadLine().isAfter(LocalDate.now() )){
-           System.out.println("\n\tisAfter - verde");
            label.setBackground(Color.GREEN);
        } else{
            label.setBackground(Color.RED);

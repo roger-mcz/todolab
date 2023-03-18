@@ -46,10 +46,6 @@ public class MainScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanelEmptyList = new javax.swing.JPanel();
-        jLabel1LogoEmptyPrj = new javax.swing.JLabel();
-        jLabelEmptyTitle = new javax.swing.JLabel();
-        jLabelEmptySubTitle = new javax.swing.JLabel();
         jScrollPaneTasks = new javax.swing.JScrollPane();
         jTableTasks = new javax.swing.JTable();
         jPanelToolBar = new javax.swing.JPanel();
@@ -66,52 +62,10 @@ public class MainScreen extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jListProjects = new javax.swing.JList<>();
         jPanelTaskList = new javax.swing.JPanel();
-
-        jPanelEmptyList.setBackground(java.awt.Color.white);
-        jPanelEmptyList.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel1LogoEmptyPrj.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1LogoEmptyPrj.setIcon(new javax.swing.ImageIcon(getClass().getResource("lists.png")));
-        jLabel1LogoEmptyPrj.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLabel1LogoEmptyPrj.setAutoscrolls(true);
-
-        jLabelEmptyTitle.setFont(new java.awt.Font("Noto Sans", 1, 36)); // NOI18N
-        jLabelEmptyTitle.setForeground(new java.awt.Color(0, 102, 102));
-        jLabelEmptyTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelEmptyTitle.setText("Nenhuma tarefa por aqui.. :D");
-
-        jLabelEmptySubTitle.setFont(new java.awt.Font("Noto Sans", 1, 23)); // NOI18N
-        jLabelEmptySubTitle.setForeground(new java.awt.Color(102, 102, 102));
-        jLabelEmptySubTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelEmptySubTitle.setText("Clique no botão \"+\" para adicionar uma nova tarefa");
-
-        javax.swing.GroupLayout jPanelEmptyListLayout = new javax.swing.GroupLayout(jPanelEmptyList);
-        jPanelEmptyList.setLayout(jPanelEmptyListLayout);
-        jPanelEmptyListLayout.setHorizontalGroup(
-            jPanelEmptyListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelEmptyListLayout.createSequentialGroup()
-                .addGroup(jPanelEmptyListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1LogoEmptyPrj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanelEmptyListLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanelEmptyListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelEmptyListLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabelEmptySubTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabelEmptyTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap())
-        );
-        jPanelEmptyListLayout.setVerticalGroup(
-            jPanelEmptyListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelEmptyListLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1LogoEmptyPrj, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelEmptyTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelEmptySubTitle)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanelEmptyList = new javax.swing.JPanel();
+        jLabel1LogoEmptyPrj = new javax.swing.JLabel();
+        jLabelEmptyTitle = new javax.swing.JLabel();
+        jLabelEmptySubTitle = new javax.swing.JLabel();
 
         jTableTasks.setBackground(new java.awt.Color(255, 255, 255));
         jTableTasks.setFont(new java.awt.Font("Noto Sans", 1, 23)); // NOI18N
@@ -306,6 +260,54 @@ public class MainScreen extends javax.swing.JFrame {
         jPanelTaskList.setBackground(new java.awt.Color(255, 255, 255));
         jPanelTaskList.setLayout(new java.awt.BorderLayout());
 
+        jPanelEmptyList.setBackground(java.awt.Color.white);
+        jPanelEmptyList.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel1LogoEmptyPrj.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1LogoEmptyPrj.setIcon(new javax.swing.ImageIcon(getClass().getResource("lists.png")));
+        jLabel1LogoEmptyPrj.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jLabel1LogoEmptyPrj.setAutoscrolls(true);
+
+        jLabelEmptyTitle.setFont(new java.awt.Font("Noto Sans", 1, 36)); // NOI18N
+        jLabelEmptyTitle.setForeground(new java.awt.Color(0, 102, 102));
+        jLabelEmptyTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelEmptyTitle.setText("Nenhuma tarefa por aqui.. :D");
+
+        jLabelEmptySubTitle.setFont(new java.awt.Font("Noto Sans", 1, 23)); // NOI18N
+        jLabelEmptySubTitle.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelEmptySubTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelEmptySubTitle.setText("Clique no botão \"+\" para adicionar uma nova tarefa");
+
+        javax.swing.GroupLayout jPanelEmptyListLayout = new javax.swing.GroupLayout(jPanelEmptyList);
+        jPanelEmptyList.setLayout(jPanelEmptyListLayout);
+        jPanelEmptyListLayout.setHorizontalGroup(
+            jPanelEmptyListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelEmptyListLayout.createSequentialGroup()
+                .addGroup(jPanelEmptyListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1LogoEmptyPrj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanelEmptyListLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanelEmptyListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelEmptyListLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabelEmptySubTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabelEmptyTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
+        );
+        jPanelEmptyListLayout.setVerticalGroup(
+            jPanelEmptyListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelEmptyListLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1LogoEmptyPrj, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelEmptyTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelEmptySubTitle)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanelTaskList.add(jPanelEmptyList, java.awt.BorderLayout.CENTER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -360,8 +362,9 @@ public class MainScreen extends javax.swing.JFrame {
         
         tskDialogScreen.addWindowListener(new WindowAdapter() {
             public void windowClosed(WindowEvent e) {
+                int projectIndex = jListProjects.getSelectedIndex();
+                Project prj = (Project) projectsModel.get(projectIndex);
                 loadTasks(prj.getId());
-                
             }
         });
     }//GEN-LAST:event_jLabelTaskAddMouseClicked
@@ -481,8 +484,8 @@ public class MainScreen extends javax.swing.JFrame {
         jTableTasks.setModel(tasksModel);
         
         if(!projectsModel.isEmpty()){
-            jListProjects.setSelectedIndex(0);
-            Project prj = (Project) projectsModel.get(0);
+            jListProjects.setSelectedIndex(1);
+            Project prj = (Project) projectsModel.get(1);
             loadTasks(prj.getId());
         }
     }
@@ -490,6 +493,7 @@ public class MainScreen extends javax.swing.JFrame {
     public void loadTasks(int idProject) {
         List<Task> tasks = tskController.getAll(idProject);
         tasksModel.setTasks(tasks);
+        //System.out.println("tasksModel.getTasks():" + tasksModel.getTasks());
         showTableTasks(!tasks.isEmpty());
     }
     
@@ -513,16 +517,14 @@ public class MainScreen extends javax.swing.JFrame {
                 jPanelEmptyList.setVisible(false);
                 jPanelTaskList.remove(jPanelEmptyList);
             }
-            
             jPanelTaskList.add(jScrollPaneTasks);
             jScrollPaneTasks.setVisible(true);
             jScrollPaneTasks.setSize(jPanelTaskList.getWidth(), jPanelTaskList.getHeight());
-        } else {
+        }  else {
             if (jScrollPaneTasks.isVisible()) {
                 jScrollPaneTasks.setVisible(false);
                 jPanelTaskList.remove(jScrollPaneTasks);
             }
-            
             jPanelTaskList.add(jPanelEmptyList);
             jPanelEmptyList.setVisible(true);
             jPanelEmptyList.setSize(jPanelTaskList.getWidth(), jPanelTaskList.getHeight());

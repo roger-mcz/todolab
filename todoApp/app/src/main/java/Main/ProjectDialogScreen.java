@@ -35,7 +35,7 @@ public class ProjectDialogScreen extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabelAdd = new javax.swing.JLabel();
+        jLabelProjectSave = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jTextFieldName = new javax.swing.JTextField();
@@ -45,7 +45,6 @@ public class ProjectDialogScreen extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(560, 600));
-        setPreferredSize(new java.awt.Dimension(560, 600));
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
         jPanel1.setToolTipText("");
@@ -55,11 +54,11 @@ public class ProjectDialogScreen extends javax.swing.JDialog {
         jLabel1.setForeground(java.awt.Color.white);
         jLabel1.setText("Projeto");
 
-        jLabelAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("checkedWhite_64.png")));
-        jLabelAdd.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jLabelAdd.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabelProjectSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("checkedWhite_64.png")));
+        jLabelProjectSave.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jLabelProjectSave.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelAddMouseClicked(evt);
+                jLabelProjectSaveMouseClicked(evt);
             }
         });
 
@@ -71,7 +70,7 @@ public class ProjectDialogScreen extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelProjectSave, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -80,7 +79,7 @@ public class ProjectDialogScreen extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-                    .addComponent(jLabelAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabelProjectSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -164,7 +163,7 @@ public class ProjectDialogScreen extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldNameActionPerformed
 
-    private void jLabelAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAddMouseClicked
+    private void jLabelProjectSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelProjectSaveMouseClicked
         try {
             Project prj = new Project();
             prj.setName(jTextFieldName.getText());
@@ -177,7 +176,7 @@ public class ProjectDialogScreen extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
         this.dispose();
-    }//GEN-LAST:event_jLabelAddMouseClicked
+    }//GEN-LAST:event_jLabelProjectSaveMouseClicked
 
     /**
      * @param args the command line arguments
@@ -225,7 +224,7 @@ public class ProjectDialogScreen extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabelAdd;
+    private javax.swing.JLabel jLabelProjectSave;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

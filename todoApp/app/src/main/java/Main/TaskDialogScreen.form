@@ -69,7 +69,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel1" max="32767" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jLabelTaskAdd" min="-2" pref="90" max="-2" attributes="0"/>
+                  <Component id="jLabelTaskSave" min="-2" pref="90" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -80,7 +80,7 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel1" min="-2" pref="78" max="-2" attributes="0"/>
-                      <Component id="jLabelTaskAdd" min="-2" pref="70" max="-2" attributes="0"/>
+                      <Component id="jLabelTaskSave" min="-2" pref="70" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -99,7 +99,7 @@
             <Property name="text" type="java.lang.String" value="Tarefa"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabelTaskAdd">
+        <Component class="javax.swing.JLabel" name="jLabelTaskSave">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="4"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -107,7 +107,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabelTaskAddMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabelTaskSaveMouseClicked"/>
           </Events>
         </Component>
       </SubComponents>
